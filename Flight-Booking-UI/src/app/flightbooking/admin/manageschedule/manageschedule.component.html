@@ -1,0 +1,244 @@
+<!-- Modal -->
+<div class="modal fade" id="addScheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                                <form [formGroup]="flightSchForm">
+                                        <fieldset>
+                                                <legend class="text-center">Enter the Flight Schedule Details<span
+                                                                class="req"><small>
+                                                                        required *</small></span></legend>
+
+                                                <div class="form-group">
+                                                        <label for="flightName"><span class="req">* </span> Flight Name:
+                                                                <small>This
+                                                                        will be Flight Name</small> </label>
+                                                        <input required type="text" #flightName
+                                                                [(ngModel)]="flightSchParam.flightName"
+                                                                formControlName="flightName" name="flightName"
+                                                                id="flightName" class="form-control phone"
+                                                                maxlength="28"
+                                                                placeholder="Enter the Flight Company..." />
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="flightDepLoc"><span class="req">* </span> Deparature
+                                                                Location: <small>This will
+                                                                        be Flight
+                                                                        Deparature Location</small> </label>
+                                                        <input required type="text" #flightDepLoc
+                                                                [(ngModel)]="flightSchParam.flightDepLoc"
+                                                                formControlName="flightDepLoc" name="flightDepLoc"
+                                                                id="flightDepLoc" class="form-control phone"
+                                                                maxlength="28"
+                                                                placeholder="Enter the Deparature Location..." />
+                                                </div>
+
+                                                <div class="form-group">
+                                                        <label for="flightArrLoc"><span class="req">* </span> Arrival
+                                                                Location: <small>This will
+                                                                        be Flight
+                                                                        Arrival Location</small> </label>
+                                                        <input required type="text" #flightDepLoc
+                                                                [(ngModel)]="flightSchParam.flightArrLoc"
+                                                                formControlName="flightArrLoc" name="flightArrLoc"
+                                                                id="flightArrLoc" class="form-control phone"
+                                                                maxlength="28"
+                                                                placeholder="Enter the Arrival Location..." />
+                                                </div>
+
+                                                
+                                                <div class="form-group">
+                                                        <label for="flightArrLoc"><span class="req">* </span> Arrival
+                                                                Location: <small>This will
+                                                                        be Flight
+                                                                        Arrival Location</small> </label>
+                                                        <input required type="text" #flightDepLoc
+                                                                [(ngModel)]="flightSchParam.flightArrLoc"
+                                                                formControlName="flightArrLoc" name="flightArrLoc"
+                                                                id="flightArrLoc" class="form-control phone"
+                                                                maxlength="28"
+                                                                placeholder="Enter the Arrival Location..." />
+                                                </div>
+
+                                                
+                                                <div class="form-group">
+                                                        <label for="flightArrLoc"><span class="req">* </span> Arrival
+                                                                Location: <small>This will
+                                                                        be Flight
+                                                                        Arrival Location</small> </label>
+                                                        <input required type="text" #flightDepLoc
+                                                                [(ngModel)]="flightSchParam.flightArrLoc"
+                                                                formControlName="flightArrLoc" name="flightArrLoc"
+                                                                id="flightArrLoc" class="form-control phone"
+                                                                maxlength="28"
+                                                                placeholder="Enter the Arrival Location..." />
+                                                </div>
+
+                                                
+                                        </fieldset>
+                                </form><!-- ends register form -->
+                        </div>
+                        <!-- <div class="modal-footer">
+                <button type="button" id="flightformclose" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" *ngIf="saveModalBtn" (click)="addFlight()">Save</button>
+                <button type="button" class="btn btn-primary" *ngIf="updateModalBtn"
+                    (click)="updateFlight()">Update</button>
+            </div> -->
+                </div>
+        </div>
+</div>
+
+<div class="col-10 col-sm-10 p-1 m-1" style="margin-top: 10px;">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addScheduleModal">Add Schedule</button>
+</div>
+<div class="d-flex">
+
+        <form [formGroup]="flightSchForm">
+                <table class="table table-striped table-bordered">
+                        <thead>
+                                <tr>
+                                        <td class="align-middle"><input required type="text" #flightName
+                                                        [(ngModel)]="flightSchParam.flightName"
+                                                        formControlName="flightName" name="flightName" id="flightName"
+                                                        class="form-control" placeholder="Enter the Flight Name..." />
+                                        </td>
+                                        <td class="align-middle"><input required type="text" #flightDepLoc
+                                                        [(ngModel)]="flightSchParam.flightDepLoc"
+                                                        formControlName="flightDepLoc" name="flightDepLoc"
+                                                        id="flightDepLoc" class="form-control"
+                                                        placeholder="Deparature Location..." /></td>
+                                        <td class="align-middle"><input required type="text" #flightArrLoc
+                                                        [(ngModel)]="flightSchParam.flightArrLoc"
+                                                        formControlName="flightArrLoc" name="flightArrLoc"
+                                                        id="flightArrLoc" class="form-control"
+                                                        placeholder="Arrival Location..." /></td>
+                                        <td class="align-middle"><input required type="text" #flightDepDate
+                                                        [(ngModel)]="flightSchParam.flightDepDate"
+                                                        formControlName="flightDepDate" name="flightDepDate"
+                                                        id="flightDepDate" class="form-control"
+                                                        placeholder="Deparature Date..." /></td>
+                                        <td class="align-middle"><input required type="text" #flightArrDate
+                                                        [(ngModel)]="flightSchParam.flightArrDate"
+                                                        formControlName="flightArrDate" name="flightArrDate"
+                                                        id="flightArrDate" class="form-control"
+                                                        placeholder="Arrival Date..." /></td>
+                                        <td class="align-middle"><input required type="text" #flightDepTime
+                                                        [(ngModel)]="flightSchParam.flightDepTime"
+                                                        formControlName="flightDepTime" name="flightDepTime"
+                                                        id="flightDepTime" class="form-control"
+                                                        placeholder="Deparature Time..." /></td>
+                                        <td class="align-middle"><input required type="text" #flightArrTime
+                                                        [(ngModel)]="flightSchParam.flightArrTime"
+                                                        formControlName="flightArrTime" name="flightArrTime"
+                                                        id="flightArrTime" class="form-control"
+                                                        placeholder="Arrival Time..." /></td>
+
+                                        <td class="align-middle">
+                                                
+                                                <select  #selectList (ngModelChange)="changeFlight($event)"
+                                                        id="flightdata"  formGroupName="flight" formControlName="id" class="custom-select"
+                                                        [(ngModel)]="flightArr">
+                                                        <option value="null" disabled>Select a Value</option>
+                                                        <!-- <option hidden disabled [selected]="true"></option> -->
+                                                        <option *ngFor="let flight of flightList; let i = index"
+                                                                [ngValue]="flight">
+                                                                {{flight.flightCompany}} ||
+                                                                {{flight.flightModel}} ||
+                                                                {{flight.flightCode}} ||
+                                                                E{{flight.flightEcoSeats}} ||
+                                                                B{{flight.flightBuiSeats}} ||
+                                                        </option>
+                                                </select>
+
+
+
+                                        </td>
+
+                                        <td class="align-middle" formGroupName="flightfare"><input required type="text"
+                                                        #flightEcoFare
+                                                        [(ngModel)]="flightSchParam.flightfare.flightEcoFare"
+                                                        formControlName="flightEcoFare" name="flightEcoFare"
+                                                        id="flightEcoFare" class="form-control"
+                                                        placeholder="Economy Price..." /></td>
+                                        <td class="align-middle" formGroupName="flightfare"><input required type="text"
+                                                        #flightBuiFare
+                                                        [(ngModel)]="flightSchParam.flightfare.flightBuiFare"
+                                                        formControlName="flightBuiFare" name="flightBuiFare"
+                                                        id="flightBuiFare" class="form-control"
+                                                        placeholder="Buisness Price..." /></td>
+                                        <td class="align-middle"><button class="btn btn-success btn-sm col-sm-12"
+                                                        (click)="addFlightSchedule()">
+                                                        Add</button></td>
+
+                                        <td class="align-middle"><button class="btn btn-success btn-sm col-sm-12"
+                                                        (click)="addFlightSchedule()">
+                                                        Save</button></td>
+                                        <td class="align-middle"><button class="btn btn-warning btn-sm col-sm-12"
+                                                        (click)="clearForm()">
+                                                        Clear</button></td>
+                                </tr>
+                                <tr>
+                                        <td class="align-middle" *ngFor="let tblheader of TableHeaders">{{tblheader}}
+                                        </td>
+                                        <th colspan="2" class="align-middle text-center">Action</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr *ngFor="let flightsch of flightschedule; let i = index">
+                                        <td class="align-middle">{{flightsch.flightName}}
+                                        </td>
+
+                                        <td class="align-middle">
+                                                {{flightsch.flightDepLoc}}</td>
+
+
+                                        <td class="align-middle">
+                                                <span>{{flightsch.flightArrLoc}}</span>
+
+                                        </td>
+                                        <td class="align-middle">
+                                                <span>{{flightsch.flightDepDate}}</span>
+
+                                        </td>
+                                        <td class="align-middle">
+                                                <span>{{flightsch.flightArrDate}}</span>
+
+                                        <td class="align-middle">
+                                                <span>{{flightsch.flightDepTime}}</span>
+
+                                        </td>
+                                        <td class="align-middle">
+                                                <span>{{flightsch.flightArrTime}}</span>
+
+                                        </td>
+
+
+                                        <td class="align-middle">{{flightsch.flight?.flightCompany}} ||
+                                                {{flightsch.flight?.flightModel}}</td>
+                                        <td class="align-middle">
+                                                <span>{{flightsch.flightfare?.flightEcoFare}}</span>
+
+                                        </td>
+
+                                        <td class="align-middle">
+                                                <span>{{flightsch.flightfare?.flightBuiFare}}</span>
+
+                                        </td>
+
+
+                                        <td class="align-middle"><button (click)="updateSchedule(flightsch,i)"
+                                                        class="btn btn-primary btn-sm col-sm-12">
+                                                        Edit</button></td>
+                                        <td class="align-middle"><button class="btn btn-danger btn-sm col-sm-12"
+                                                        (click)="delteSchedule(flightsch.id)">
+                                                        Delete</button></td>
+                                </tr>
+                        </tbody>
+                </table>
+        </form>
+</div>

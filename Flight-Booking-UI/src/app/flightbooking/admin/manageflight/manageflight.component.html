@@ -1,0 +1,147 @@
+<!-- Modal -->
+<div class="modal fade" id="addFlightModal" tabindex="-1" aria-labelledby="flightModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="flightForm">
+                    <fieldset>
+                        <legend class="text-center">Enter the Flight Details<span class="req"><small>
+                                    required *</small></span></legend>
+
+                        <div class="form-group">
+                            <label for="flightCompany"><span class="req">* </span> Company Name: <small>This
+                                    will be Flight
+                                    Company Name</small> </label>
+                            <input required type="text" #flightCompany [(ngModel)]="flightParam.flightCompany"
+                                formControlName="flightCompany" name="flightCompany" id="flightCompany"
+                                class="form-control phone" maxlength="28" placeholder="Enter the Flight Company..." />
+                        </div>
+                        <div class="form-group">
+                            <label for="flightModel"><span class="req">* </span> Flight Model: <small>This will
+                                    be Flight
+                                    Company Model</small> </label>
+                            <input required type="text" #flightModel [(ngModel)]="flightParam.flightModel"
+                                formControlName="flightModel" name="flightModel" id="flightModel"
+                                class="form-control phone" maxlength="28" placeholder="Enter the Flight Model..." />
+                        </div>
+                        <div class="form-group">
+                            <label for="flightCode"><span class="req">* </span>Flight Code: <small>This will be
+                                    unique
+                                    Flight Code</small> </label>
+                            <input required type="text" #flightCode [(ngModel)]="flightParam.flightCode"
+                                formControlName="flightCode" name="flightCode" id="flightCode"
+                                class="form-control phone" maxlength="28" placeholder="Enter the Flight Code..." />
+                        </div>
+                        <div class="form-group">
+                            <label for="flightEcoSeats"><span class="req">* </span> Economy Seats: <small>This
+                                    will be the
+                                    Flight Economy Seats Capacity </small> </label>
+                            <input required type="text" #flightEcoSeats [(ngModel)]="flightParam.flightEcoSeats"
+                                formControlName="flightEcoSeats" name="flightEcoSeats" id="flightEcoSeats"
+                                class="form-control phone" maxlength="28"
+                                placeholder="Enter the Economy Seats(Capacity)..." />
+                        </div>
+                        <div class="form-group">
+                            <label for="flightBuiSeats"><span class="req">*</span> Buisness Seats: <small>This
+                                    will be the
+                                    Flight Buisness Seats Capacity </small> </label>
+                            <input required type="text" #flightBuiSeats [(ngModel)]="flightParam.flightBuiSeats"
+                                formControlName="flightBuiSeats" name="flightBuiSeats" id="flightBuiSeats"
+                                class="form-control phone" maxlength="28"
+                                placeholder="Enter the Buisness Seats(Capacity)..." />
+                        </div>
+                        <div class="form-group">
+                            <label for="flightAvlStatus"><span class="req">* </span> Available Status:
+                                <small>This will be
+                                    Flight Status</small> </label>
+                            <select #flightAvlStatus [(ngModel)]="flightParam.flightAvlStatus" name="flightAvlStatus"
+                                formControlName="flightAvlStatus" id="flightAvlStatus" class="form-control phone"
+                                maxlength="28">
+                                <option hidden value="" disabled selected>Select Status</option>
+                                <option *ngFor="let avlStatus of avlStatuses">{{avlStatus}}</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </form><!-- ends register form -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="flightformclose" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" *ngIf="saveModalBtn" (click)="addFlight()">Save</button>
+                <button type="button" class="btn btn-primary" *ngIf="updateModalBtn"
+                    (click)="updateFlight()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <div class="col-10 col-sm-10 p-1 m-1" style="margin-top: 10px;">
+        <button (click)="showSaveBtn()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addFlightModal">Add
+            Flight</button>
+    </div>
+
+
+    <div class="col-10 col-sm-10 p-1"  style="margin-top: 10px;">
+        <div class="form-group">
+            <!-- <input type="text" class="form-control" placeholder="Search Here" [(ngModel)]="searchText"> -->
+            <input class="col-2 col-sm-2 p-1 m-1" type="text" placeholder="flightCompanySearch"
+                [(ngModel)]="flightCompanySearch">
+            <input class="col-2 col-sm-2 p-1 m-1" type="text" placeholder="flightModelSearch"
+                [(ngModel)]="flightModelSearch">
+            <input class="col-2 col-sm-2 p-1 m-1" type="text" placeholder="flightCodeSearch"
+                [(ngModel)]="flightCodeSearch">
+        </div>
+    </div>
+
+    <div class="d-flex p-1">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td class="align-middle" *ngFor="let tblheader of TableHeaders">{{tblheader}}</td>
+                    <th colspan="2" class="align-middle text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let flight of flights | multiSearchFlight: flightCompanySearch : flightModelSearch : flightCodeSearch | paginate: { itemsPerPage: count, currentPage: page }">
+                    <td class="align-middle" hidden>{{flight.id}}</td>
+                    <td class="align-middle">{{flight.flightCompany}}</td>
+                    <td class="align-middle">{{flight.flightModel}}</td>
+                    <td class="align-middle">{{flight.flightCode}}</td>
+                    <td class="align-middle">{{flight.flightEcoSeats}}</td>
+                    <td class="align-middle">{{flight.flightBuiSeats}}</td>
+                    <td class="align-middle">{{flight.flightAvlStatus}}</td>
+                    <td class="align-middle"><button data-bs-toggle="modal" data-bs-target="#addFlightModal"
+                            class="btn btn-primary btn-sm col-sm-12" (click)="getFlightForm(flight)">
+                            Edit</button></td>
+                    <td class="align-middle"><button class="btn btn-danger btn-sm col-sm-12"
+                            (click)="delteFlight(flight.id)">
+                            Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--Including the pagination control.-->
+    <div class="d-flex">
+        <div class="col-10 col-sm-10 p-1 m-1" style="margin-top: 10px;">
+            <pagination-controls  (pageChange)="page = $event"></pagination-controls>
+
+        </div>
+
+        <div class="col-10 col-sm-10 p-1 m-1" style="margin-top: 10px;">
+
+            Items per Page:
+            <select (change)="handlePageSizeChange($event)">
+                <option *ngFor="let size of pageSizes" [ngValue]="size" [selected]="size == count">
+                    {{ size }}
+                </option>
+            </select>
+        </div>
+
+    </div>
